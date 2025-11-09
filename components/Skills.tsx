@@ -43,7 +43,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center bg-slate-50 py-20">
+    <section id="skills" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-sky-50 py-20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -52,7 +52,7 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-16 text-center">
-            Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Technologies</span>
+            Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Technologies</span>
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -65,10 +65,10 @@ export default function Skills() {
                   animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white rounded-xl shadow-lg p-6 border-2 border-transparent hover:border-purple-400 transition-all duration-300"
+                  className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg">
+                    <div className="p-2 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900">{category.title}</h3>
@@ -78,7 +78,7 @@ export default function Skills() {
                     {category.skills.map((skill, skillIndex) => (
                       <span
                         key={skillIndex}
-                        className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm hover:bg-purple-100 hover:text-purple-700 transition-colors duration-200"
+                        className="px-3 py-1 bg-blue-50 text-slate-700 rounded-full text-sm hover:bg-blue-100 hover:text-blue-700 transition-colors duration-200"
                       >
                         {skill}
                       </span>

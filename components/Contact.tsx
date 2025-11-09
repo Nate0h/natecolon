@@ -15,7 +15,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center bg-slate-50 py-20">
+    <section id="contact" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-sky-200 py-20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -24,7 +24,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 text-center">
-            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Touch</span>
+            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Touch</span>
           </h2>
           
           <p className="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
@@ -39,7 +39,7 @@ export default function Contact() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-6"
             >
-              <div className="bg-white rounded-xl shadow-lg p-8">
+              <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 border border-blue-100">
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">Let's Connect</h3>
                 
                 <div className="space-y-4">
@@ -47,8 +47,8 @@ export default function Contact() {
                     href="mailto:your.email@example.com"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
                   >
-                    <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors duration-200">
-                      <Mail className="w-6 h-6 text-purple-600" />
+                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
+                      <Mail className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900">Email</p>
@@ -62,8 +62,8 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
                   >
-                    <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors duration-200">
-                      <Github className="w-6 h-6 text-purple-600" />
+                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
+                      <Github className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900">GitHub</p>
@@ -77,8 +77,8 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
                   >
-                    <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors duration-200">
-                      <Linkedin className="w-6 h-6 text-purple-600" />
+                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
+                      <Linkedin className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900">LinkedIn</p>
@@ -89,7 +89,7 @@ export default function Contact() {
                 
                 <button
                   onClick={handleDownloadResume}
-                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2"
+                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2 shadow-lg"
                 >
                   <Download className="w-5 h-5" />
                   Download Resume
@@ -103,7 +103,7 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <form className="bg-white rounded-xl shadow-lg p-8 space-y-4">
+              <form className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 space-y-4 border border-blue-100">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-slate-900 mb-2">
                     Name
@@ -111,7 +111,7 @@ export default function Contact() {
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your name"
                   />
                 </div>
@@ -123,7 +123,7 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2 shadow-lg"
                 >
                   <Send className="w-5 h-5" />
                   Send Message

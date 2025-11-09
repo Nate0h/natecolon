@@ -39,7 +39,7 @@ export default function Navigation() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-slate-900/95 backdrop-blur-md shadow-lg'
+            ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-blue-100'
             : 'bg-transparent'
         }`}
       >
@@ -47,7 +47,9 @@ export default function Navigation() {
           <div className="flex items-center justify-between">
             <button
               onClick={() => scrollToSection('#home')}
-              className="text-2xl font-bold text-white hover:text-purple-400 transition-colors duration-200"
+              className={`text-2xl font-bold transition-colors duration-200 ${
+                isScrolled ? 'text-blue-600 hover:text-cyan-500' : 'text-white hover:text-blue-200'
+              }`}
             >
               NC
             </button>
@@ -58,7 +60,9 @@ export default function Navigation() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-white hover:text-purple-400 transition-colors duration-200 font-medium"
+                  className={`transition-colors duration-200 font-medium ${
+                    isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
+                  }`}
                 >
                   {item.name}
                 </button>
@@ -68,7 +72,9 @@ export default function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2"
+              className={`md:hidden p-2 ${
+                isScrolled ? 'text-slate-700' : 'text-white'
+              }`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

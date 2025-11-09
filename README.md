@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nate Colon - Portfolio Website ☁️✈️
 
-## Getting Started
+A modern, animated portfolio website with a unique cloud and sky theme. Built with Next.js, TypeScript, Framer Motion, and TailwindCSS.
 
-First, run the development server:
+## ✨ Features
 
+- **Animated Cloud Background** - Floating SVG clouds with parallax effect on hero section
+- **Flying Airplane Animation** - Periodic airplane flying across the sky
+- **Smooth Scroll Animations** - Sections fade in as you scroll with Framer Motion
+- **Airy Cloud Theme** - Sky blue gradients and cloud-like aesthetics throughout
+- **Fully Responsive** - Works beautifully on mobile, tablet, and desktop
+- **Modern Tech Stack** - Next.js 16, React 19, TypeScript, TailwindCSS v4
+
+## 🎨 Theme
+
+The entire site features an "airy cloud" aesthetic with:
+- Sky blue to cyan gradients
+- Floating cloud animations
+- Glass-morphism effects (backdrop blur)
+- Smooth transitions and hover effects
+- Light, dreamy color palette
+
+## 🚀 Getting Started
+
+Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) to view your portfolio.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+├── app/
+│   ├── page.tsx          # Main page with all sections
+│   ├── layout.tsx        # Root layout
+│   └── globals.css       # Global styles
+├── components/
+│   ├── Hero.tsx          # Landing section with clouds & airplane
+│   ├── About.tsx         # About me section
+│   ├── Experience.tsx    # Work experience timeline
+│   ├── Skills.tsx        # Tech stack grid
+│   ├── Education.tsx     # Education details
+│   ├── Contact.tsx       # Contact form & links
+│   ├── Navigation.tsx    # Sticky nav bar
+│   ├── CloudBackground.tsx  # Animated clouds component
+│   └── FloatingElement.tsx  # Reusable floating animation
+└── public/               # Static assets
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Update Personal Information
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Hero Section** (`components/Hero.tsx`)
+   - Change your name and tagline
+   
+2. **About Section** (`components/About.tsx`)
+   - Update your bio and description
 
-## Deploy on Vercel
+3. **Experience** (`components/Experience.tsx`)
+   - Add your work history in the `experiences` array
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Skills** (`components/Skills.tsx`)
+   - Modify the `skillCategories` array with your tech stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. **Education** (`components/Education.tsx`)
+   - Update the `education` array with your degrees
+
+6. **Contact** (`components/Contact.tsx`)
+   - Add your email, GitHub, and LinkedIn links
+   - Place your resume PDF in `/public` folder
+
+### Customize Colors
+
+All colors use TailwindCSS classes. To change the theme:
+- Blue/Cyan gradients: Search for `from-blue-` and `to-cyan-`
+- Replace with your preferred Tailwind color palette
+
+## 🎭 Animations
+
+- **Clouds**: Continuous horizontal movement with varying speeds
+- **Airplane**: Flies across every ~45 seconds with vertical bobbing
+- **Scroll Animations**: Fade-in and slide effects using Framer Motion's `useInView`
+- **Hover Effects**: Scale transforms and color transitions
+
+## 📦 Dependencies
+
+- **Next.js 16** - React framework
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Framer Motion** - Animation library
+- **Lucide React** - Icon library
+- **TailwindCSS v4** - Utility-first CSS
+
+## 🚢 Deployment
+
+Deploy to Vercel (recommended):
+```bash
+npm run build
+```
+
+Or deploy to any platform that supports Next.js.
+
+## 📝 License
+
+MIT License - feel free to use this as a template for your own portfolio!
