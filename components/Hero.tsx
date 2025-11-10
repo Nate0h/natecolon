@@ -18,22 +18,33 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center"
+          className="text-center flex flex-col gap-8"
         >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg"
+            className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg"
           >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Nate Colon</span>
+            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" style={{ 
+              WebkitTextStroke: '.5px rgba(255, 255, 255, 0.6)',
+              textShadow: '0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
+            }}>
+              Nate
+            </span>{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" style={{ 
+              WebkitTextStroke: '.5px rgba(255, 255, 255, 0.6)',
+              textShadow: '0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
+            }}>
+              Colon
+            </span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-700 mb-8 font-medium"
+            className="text-xl md:text-2xl text-slate-700 font-medium"
           >
             Full Stack Developer | Creative Problem Solver
           </motion.p>
@@ -42,17 +53,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex gap-4 justify-center flex-wrap"
+            className="flex gap-6 justify-center flex-wrap"
           >
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
+              className="px-12 py-5 text-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-200 shadow-lg min-w-[200px]"
             >
               Get In Touch
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="px-8 py-3 border-2 border-blue-500 text-blue-600 bg-white/80 backdrop-blur-sm rounded-full font-semibold hover:bg-blue-500 hover:text-white transition-all duration-200 shadow-lg"
+              className="px-12 py-5 text-lg border-2 border-blue-500 text-blue-600 bg-white/80 backdrop-blur-sm rounded-full font-semibold hover:bg-blue-500 hover:text-white transition-all duration-200 shadow-lg min-w-[200px]"
             >
               Learn More
             </button>

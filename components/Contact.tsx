@@ -15,141 +15,74 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-sky-200 py-20">
+    <section id="contact" className="min-h-screen flex items-start justify-center bg-gradient-to-b from-blue-100 to-sky-200 pt-32 pb-20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
+          className="flex flex-col gap-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 text-center">
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Touch</span>
           </h2>
           
-          <p className="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
-            I'm always open to new opportunities and interesting projects. Let's connect!
-          </p>
-          
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
+          {/* Contact Icons */}
+          <div className="flex justify-center items-center gap-12">
+            <motion.a
+              href="mailto:nathanielcolon12@gmail.com"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              whileHover={{ scale: 1.15, y: -10 }}
+              className="p-8 bg-white/80 backdrop-blur-md rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-400 cursor-pointer"
             >
-              <div className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 border border-blue-100">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Let's Connect</h3>
-                
-                <div className="space-y-4">
-                  <a
-                    href="mailto:your.email@example.com"
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
-                  >
-                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
-                      <Mail className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">Email</p>
-                      <p className="text-slate-600">your.email@example.com</p>
-                    </div>
-                  </a>
-                  
-                  <a
-                    href="https://github.com/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
-                  >
-                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
-                      <Github className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">GitHub</p>
-                      <p className="text-slate-600">@yourusername</p>
-                    </div>
-                  </a>
-                  
-                  <a
-                    href="https://linkedin.com/in/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors duration-200 group"
-                  >
-                    <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors duration-200">
-                      <Linkedin className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">LinkedIn</p>
-                      <p className="text-slate-600">@yourusername</p>
-                    </div>
-                  </a>
-                </div>
-                
-                <button
-                  onClick={handleDownloadResume}
-                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2 shadow-lg"
-                >
-                  <Download className="w-5 h-5" />
-                  Download Resume
-                </button>
-              </div>
-            </motion.div>
+              <Mail className="w-16 h-16 text-blue-600" />
+            </motion.a>
             
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            <motion.a
+              href="https://github.com/nate0h"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              whileHover={{ scale: 1.15, y: -10 }}
+              className="p-8 bg-white/80 backdrop-blur-md rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-400 cursor-pointer"
             >
-              <form className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 space-y-4 border border-blue-100">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-slate-900 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Your name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-slate-900 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
-                    placeholder="Your message..."
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2 shadow-lg"
-                >
-                  <Send className="w-5 h-5" />
-                  Send Message
-                </button>
-              </form>
-            </motion.div>
+              <Github className="w-16 h-16 text-blue-600" />
+            </motion.a>
+            
+            <motion.a
+              href="https://linkedin.com/in/nate0h"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              whileHover={{ scale: 1.15, y: -10 }}
+              className="p-8 bg-white/80 backdrop-blur-md rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-400 cursor-pointer"
+            >
+              <Linkedin className="w-16 h-16 text-blue-600" />
+            </motion.a>
           </div>
+          
+          {/* Download Resume Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex justify-center"
+          >
+            <button
+              onClick={handleDownloadResume}
+              className="min-w-96 px-24 py-8 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-bold hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-4 shadow-xl text-2xl"
+            >
+              <Download className="w-8 h-8" />
+              Download Resume
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </section>
