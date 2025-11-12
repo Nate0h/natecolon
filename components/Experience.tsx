@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 const experiences = [
   {
@@ -12,8 +13,9 @@ const experiences = [
     company: 'Sabre Systems LLC',
     period: '2024 - Present',
     date: '2024',
-    description: 'At Sabre Systems, I help engineer the software backbone that supports the Navy’s P-8A Poseidon. On the ABA team, I build and maintain an integrated environment that keeps complex mission systems healthy and connected. My work bridges backend development, automation, and data reliability.',
-    technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL']
+    description: "At Sabre Systems, I help engineer the software backbone that supports the Navy's P-8A Poseidon. On the ABA team, I build and maintain an integrated environment that keeps complex mission systems healthy and connected. My work bridges backend development, automation, and data reliability.",
+    technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL'],
+    logo: '/logos/sabre.png'
   },
   {
     id: 2,
@@ -22,7 +24,8 @@ const experiences = [
     period: '2022-2024',
     date: '2022',
     description: 'During my time as a Junior Developer at Bessemer Trust, I worked closely with analysts and developers to resolve production challenges, optimize ETL processes, and build automation tools that replaced manual tasks. This work enhanced system performance, increased efficiency, and strengthened data integrity within the Investment Management Suite.',
-    technologies: ['React', 'Express', 'MongoDB', 'Docker']
+    technologies: ['React', 'Express', 'MongoDB', 'Docker'],
+    logo: '/logos/bessemer.png'
   },
   {
     id: 3,
@@ -31,7 +34,8 @@ const experiences = [
     period: '2021',
     date: '2021',
     description: 'Interned on the Digital Information Onboarding team by configuring clients on the communications platform based on their delivery preferences. I worked with Spring Boot, JDBC, and SQL to ensure smooth client integration and deployment.',
-    technologies: ['JavaScript', 'HTML/CSS', 'Vue.js', 'MySQL']
+    technologies: ['JavaScript', 'HTML/CSS', 'Vue.js', 'MySQL'],
+    logo: '/logos/broadridge.png'
   }
 ];
 
@@ -60,14 +64,6 @@ export default function Experience() {
             >
               My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Experience</span>
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-600 text-lg mt-16"
-            >
-              Click on a timeline point to explore my professional journey
-            </motion.p>
           </div>
 
           {/* SECTION 2: Timeline */}
@@ -137,14 +133,31 @@ export default function Experience() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="bg-white/90 backdrop-blur-lg rounded-2xl p-10 px-16 md:p-20 md:px-24 border-2 border-blue-200 shadow-2xl"
+                  className="bg-white/90 backdrop-blur-lg rounded-2xl p-10 px-16 md:p-20 md:px-24 border-2 border-blue-200 shadow-2xl relative"
                 >
                   {(() => {
                     const exp = experiences.find(e => e.id === selectedExperience);
                     if (!exp) return null;
                     
                     return (
-                      <div className="space-y-8">
+                      <div className="flex flex-col gap-4">
+                        {/* Company Logo Frame - Top Left */}
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.1 }}
+                          className="absolute -top-8 -left-8 w-32 h-32 bg-white rounded-xl shadow-xl border-4 border-blue-300 p-3 flex items-center justify-center overflow-hidden"
+                        >
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={exp.logo}
+                              alt={`${exp.company} logo`}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </motion.div>
+
                         {/* Job Title */}
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
@@ -152,28 +165,21 @@ export default function Experience() {
                           transition={{ delay: 0.1 }}
                           className="text-center"
                         >
-                          <div className="flex items-center justify-center gap-4 mb-4">
-                            <Briefcase className="w-10 h-10 text-blue-500" />
-                            <h3 className="text-4xl md:text-5xl font-bold text-slate-900">
-                              {exp.title}
-                            </h3>
-                          </div>
+                          <h3 className="text-4xl md:text-5xl font-bold text-slate-900">
+                            {exp.title}
+                          </h3>
                         </motion.div>
 
-                        {/* Company & Period */}
+                        {/* Company */}
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="flex flex-col items-center gap-4"
+                          className="text-center"
                         >
                           <p className="text-2xl md:text-3xl text-blue-600 font-bold">
                             {exp.company}
                           </p>
-                          <div className="flex items-center gap-3 text-slate-600 bg-blue-50 px-6 py-3 rounded-full">
-                            <Calendar className="w-6 h-6" />
-                            <span className="text-lg font-semibold">{exp.period}</span>
-                          </div>
                         </motion.div>
                         
                         {/* Description */}
@@ -187,64 +193,11 @@ export default function Experience() {
                             {exp.description}
                           </p>
                         </motion.div>
-                        
-                        {/* Technologies */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4 }}
-                          className="pt-6"
-                        >
-                          <h4 className="text-center text-sm font-bold text-slate-600 mb-6 uppercase tracking-wider">
-                            Technologies Used
-                          </h4>
-                          <div className="flex flex-wrap gap-4 justify-center">
-                            {exp.technologies.map((tech, techIndex) => (
-                              <motion.span
-                                key={techIndex}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.5 + techIndex * 0.05 }}
-                                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-base font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all"
-                              >
-                                {tech}
-                              </motion.span>
-                            ))}
-                          </div>
-                        </motion.div>
                       </div>
                     );
                   })()}
                 </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="text-center py-20"
-                >
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{ 
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                    className="mb-8 inline-block"
-                  >
-                    <Briefcase className="w-24 h-24 text-blue-400" />
-                  </motion.div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-slate-700 mb-4">
-                    Select a Timeline Point
-                  </h3>
-                  <p className="text-xl text-slate-500">
-                    Click on any year above to view experience details
-                  </p>
-                </motion.div>
-              )}
+              ) : null}
             </AnimatePresence>
           </div>
         </motion.div>

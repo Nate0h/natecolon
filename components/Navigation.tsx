@@ -9,18 +9,32 @@ const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Education', href: '#education' },
   { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Determine which section is currently in view
+      const sections = navItems.map(item => item.href.substring(1)); // Remove '#' from href
+      const scrollPosition = window.scrollY + 200; // Offset for better detection
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
+
+    handleScroll(); // Call once on mount
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -56,17 +70,28 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`transition-colors duration-200 font-medium ${
-                    isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.substring(1);
+                return (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`relative transition-colors duration-200 font-medium pb-1 ${
+                      isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"
+                        initial={false}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Mobile Menu Button */}
@@ -92,15 +117,21 @@ export default function Navigation() {
           className="fixed inset-0 z-40 bg-slate-900 md:hidden"
         >
           <div className="flex flex-col items-center justify-center h-full gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-2xl text-white hover:text-purple-400 transition-colors duration-200 font-medium"
-              >
-                {item.name}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="relative text-2xl text-white hover:text-purple-400 transition-colors duration-200 font-medium pb-1"
+                >
+                  {item.name}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       )}

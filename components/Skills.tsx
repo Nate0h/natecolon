@@ -36,7 +36,7 @@ const CamelIcon = ({ className, style }: { className?: string; style?: React.CSS
 
 const skillCategories = [
   {
-    title: 'Programming Languages',
+    title: 'Languages',
     icon: Layout,
     technologies: [
       { name: 'Java', icon: SiOpenjdk, color: '#007396' },
@@ -102,12 +102,13 @@ export default function Skills() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
+          className="flex flex-col gap-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 text-center">
             Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Technologies</span>
           </h2>
           
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 items-center">
             {skillCategories.map((category, index) => {
               const Icon = category.icon;
               return (
@@ -116,13 +117,15 @@ export default function Skills() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all duration-300"
+                  className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all duration-300 w-full max-w-4xl"
                 >
                   <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-slate-900">{category.title}</h3>
+                    <h3 className="text-2xl font-bold">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">{category.title}</span>
+                    </h3>
                   </div>
                   
-                  <div className="flex flex-wrap gap-6 items-center justify-start">
+                  <div className="flex flex-wrap gap-6 items-center justify-center">
                     {category.technologies.length === 0 ? (
                       <p className="text-slate-400 italic">Technologies will be added here</p>
                     ) : (

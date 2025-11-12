@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import CloudBackgroundCSS from './CloudBackgroundCSS';
+import RotatingText from './RotatingText';
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -18,36 +19,84 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center flex flex-col gap-8"
+          className="text-center flex flex-col gap-8 items-center"
         >
+          {/* Profile Picture */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative"
+          >
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-gradient-to-br from-blue-400 to-cyan-300">
+              <img
+                src="/profile/profile.png"
+                alt="Nate Colón"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Glow effect behind profile picture */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-cyan-300 blur-xl opacity-50 -z-10"></div>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg"
           >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" style={{ 
-              WebkitTextStroke: '.5px rgba(255, 255, 255, 0.6)',
-              textShadow: '0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
-            }}>
+            Hi, I'm{' '}
+            <motion.span 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" 
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(147, 197, 253, 0.4)',
+                  '0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.8), 0 0 80px rgba(147, 197, 253, 0.6)',
+                  '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(147, 197, 253, 0.4)'
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ 
+                WebkitTextStroke: '1px rgba(255, 255, 255, 0.9)',
+              }}
+            >
               Nate
-            </span>{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" style={{ 
-              WebkitTextStroke: '.5px rgba(255, 255, 255, 0.6)',
-              textShadow: '0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
-            }}>
-              Colon
-            </span>
+            </motion.span>{' '}
+            <motion.span 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 relative inline-block" 
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(147, 197, 253, 0.4)',
+                  '0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.8), 0 0 80px rgba(147, 197, 253, 0.6)',
+                  '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(147, 197, 253, 0.4)'
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3
+              }}
+              style={{ 
+                WebkitTextStroke: '1px rgba(255, 255, 255, 0.9)',
+              }}
+            >
+              Colón
+            </motion.span>
           </motion.h1>
           
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-slate-700 font-medium"
+            className="text-xl md:text-2xl font-medium"
           >
-            Full Stack Developer | Creative Problem Solver
-          </motion.p>
+            <RotatingText words={['Software Engineer','Futurist','AI Enthusiast','Creator', 'Boxer']} interval={2500} />
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}

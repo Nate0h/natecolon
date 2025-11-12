@@ -3,15 +3,20 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Github, Linkedin, Download, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Youtube, Download, Send } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const handleDownloadResume = () => {
-    // This will be replaced with actual resume file
-    alert('Resume download will be implemented with your actual resume file');
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Nathaniel_Colon_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -66,13 +71,26 @@ export default function Contact() {
             >
               <Linkedin className="w-16 h-16 text-blue-600" />
             </motion.a>
+            
+            <motion.a
+              href="https://www.youtube.com/@NateOnAI"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              whileHover={{ scale: 1.15, y: -10 }}
+              className="p-8 bg-white/80 backdrop-blur-md rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-400 cursor-pointer"
+            >
+              <Youtube className="w-16 h-16 text-blue-600" />
+            </motion.a>
           </div>
           
           {/* Download Resume Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="flex justify-center"
           >
             <button
