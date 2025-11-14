@@ -45,7 +45,7 @@ export default function Experience() {
   const [selectedExperience, setSelectedExperience] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-sky-100 to-blue-100 py-20">
+    <section id="experience" className="flex items-center justify-center bg-gradient-to-b from-sky-100 to-blue-100 py-20">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div
           ref={ref}

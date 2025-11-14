@@ -42,7 +42,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="min-h-screen flex items-start justify-center bg-gradient-to-b from-blue-50 to-sky-100 py-20 pt-32">
+    <section id="about" className="flex items-start justify-center bg-gradient-to-b from-blue-50 to-sky-100 py-20 pt-32">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           ref={ref}

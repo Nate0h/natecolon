@@ -95,7 +95,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 to-sky-50 py-20">
+    <section id="skills" className="flex items-center justify-center bg-gradient-to-b from-blue-100 to-sky-50 py-20">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           ref={ref}

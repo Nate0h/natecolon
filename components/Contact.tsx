@@ -20,14 +20,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-start justify-center bg-gradient-to-b from-blue-100 to-sky-200 pt-32 pb-20">
+    <section id="contact" className="flex items-start justify-center bg-gradient-to-b from-blue-100 to-sky-200 pt-32 pb-20">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col gap-24"
+          className="flex flex-col gap-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900 text-center">
             Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Touch</span>
