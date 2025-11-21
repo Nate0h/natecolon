@@ -104,7 +104,7 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           className="flex flex-col gap-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 text-center">
             Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Technologies</span>
           </h2>
           
@@ -117,15 +117,15 @@ export default function Skills() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all duration-300 w-full max-w-4xl"
+                  className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-4 md:p-8 border-2 border-blue-100 hover:border-blue-400 hover:shadow-xl transition-all duration-300 w-full max-w-4xl"
                 >
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold">
+                  <div className="mb-4 md:mb-6">
+                    <h3 className="text-xl md:text-2xl font-bold">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">{category.title}</span>
                     </h3>
                   </div>
                   
-                  <div className="flex flex-wrap gap-6 items-center justify-center">
+                  <div className="flex flex-wrap gap-4 md:gap-6 items-center justify-center">
                     {category.technologies.length === 0 ? (
                       <p className="text-slate-400 italic">Technologies will be added here</p>
                     ) : (
@@ -140,10 +140,10 @@ export default function Skills() {
                             whileHover={{ y: -8, scale: 1.1, transition: { duration: 0.2, ease: "easeOut" } }}
                             className="flex flex-col items-center gap-2 group cursor-pointer"
                           >
-                            <div className="p-3 rounded-lg bg-slate-50 group-hover:bg-blue-100 transition-all duration-100 shadow-sm group-hover:shadow-lg">
-                              <TechIcon className="w-12 h-12 transition-transform duration-100" style={{ color: tech.color }} />
+                            <div className="p-2 md:p-3 rounded-lg bg-slate-50 group-hover:bg-blue-100 transition-all duration-100 shadow-sm group-hover:shadow-lg">
+                              <TechIcon className="w-8 h-8 md:w-12 md:h-12 transition-transform duration-100" style={{ color: tech.color }} />
                             </div>
-                            <span className="text-sm text-slate-700 font-medium group-hover:text-blue-600 transition-colors duration-100">{tech.name}</span>
+                            <span className="text-xs md:text-sm text-slate-700 font-medium group-hover:text-blue-600 transition-colors duration-100">{tech.name}</span>
                           </motion.div>
                         );
                       })

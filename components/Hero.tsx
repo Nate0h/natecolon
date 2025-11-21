@@ -43,7 +43,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg"
+            className="text-4xl md:text-7xl font-bold text-white drop-shadow-lg"
           >
             Hi, I'm{' '}
             <motion.span 
@@ -93,7 +93,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl font-medium"
+            className="text-lg md:text-2xl font-medium"
           >
             <RotatingText words={['Software Engineer','Futurist','AI Enthusiast','Creator', 'Boxer']} interval={2500} />
           </motion.div>
@@ -102,17 +102,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex gap-6 justify-center flex-wrap"
+            className="flex gap-4 justify-center flex-wrap px-4"
           >
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-12 py-5 text-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-200 shadow-lg min-w-[200px]"
+              className="px-8 py-4 md:px-12 md:py-5 text-base md:text-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
             >
               Get In Touch
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="px-12 py-5 text-lg border-2 border-blue-500 text-blue-600 bg-white/80 backdrop-blur-sm rounded-full font-semibold hover:bg-blue-500 hover:text-white transition-all duration-200 shadow-lg min-w-[200px]"
+              className="px-8 py-4 md:px-12 md:py-5 text-base md:text-lg border-2 border-blue-500 text-blue-600 bg-white/80 backdrop-blur-sm rounded-full font-semibold hover:bg-blue-500 hover:text-white transition-all duration-200 shadow-lg"
             >
               Learn More
             </button>

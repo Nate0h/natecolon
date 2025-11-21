@@ -51,7 +51,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="flex flex-col gap-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 text-center">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Me</span>
           </h2>
           
@@ -59,9 +59,9 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="px-4 md:px-8"
+            className="px-2 md:px-8"
           >
-            <div className="text-xl md:text-2xl text-slate-800 leading-relaxed font-normal tracking-wide text-left space-y-6">
+            <div className="text-base md:text-2xl text-slate-800 leading-relaxed font-normal tracking-wide text-left space-y-4 md:space-y-6">
               <p className="indent-8">
                 I'm Nate Colón, a software engineer, amateur boxer, and creative builder who's always chasing the next challenge.
               </p>

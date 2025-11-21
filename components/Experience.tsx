@@ -67,8 +67,60 @@ export default function Experience() {
           </div>
 
           {/* SECTION 2: Timeline */}
-          <div className="w-full mb-64 pb-12">
-            <div className="flex items-center justify-center">
+          <div className="w-full mb-12 md:mb-64 pb-12">
+            {/* Mobile: Vertical Timeline */}
+            <div className="md:hidden flex flex-col items-center gap-6">
+              {experiences.map((exp, index) => (
+                <div key={exp.id} className="flex flex-col items-center">
+                  {/* Timeline Item */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                    className="flex flex-col items-center cursor-pointer group"
+                    onClick={() => setSelectedExperience(exp.id)}
+                  >
+                    {/* Timeline Dot */}
+                    <motion.div
+                      className={`w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        selectedExperience === exp.id
+                          ? 'bg-gradient-to-br from-blue-500 to-cyan-500 shadow-2xl shadow-blue-500/50 scale-110'
+                          : 'bg-white border-4 border-blue-400 group-hover:border-cyan-400 group-hover:shadow-xl'
+                      }`}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className={`text-sm font-bold ${
+                        selectedExperience === exp.id ? 'text-white' : 'text-blue-600'
+                      }`}>
+                        {exp.date}
+                      </span>
+                    </motion.div>
+                    
+                    {/* Period Label */}
+                    <motion.div className="mt-3">
+                      <p className={`text-sm font-bold whitespace-nowrap transition-colors ${
+                        selectedExperience === exp.id ? 'text-blue-600' : 'text-slate-600 group-hover:text-blue-500'
+                      }`}>
+                        {exp.period}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Connecting Line */}
+                  {index < experiences.length - 1 && (
+                    <motion.div
+                      initial={{ scaleY: 0 }}
+                      animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                      className="w-2 h-12 bg-gradient-to-b from-blue-400 to-cyan-400 my-2"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Horizontal Timeline */}
+            <div className="hidden md:flex items-center justify-center">
               {experiences.map((exp, index) => (
                 <div key={exp.id} className="flex items-center">
                   {/* Timeline Item */}
@@ -124,7 +176,7 @@ export default function Experience() {
           </div>
 
           {/* SECTION 3: Experience Details */}
-          <div className="w-full max-w-4xl mt-8 px-6 md:px-12">
+          <div className="w-full max-w-4xl mt-8 px-4 md:px-12">
             <AnimatePresence mode="wait">
               {selectedExperience ? (
                 <motion.div
@@ -133,7 +185,7 @@ export default function Experience() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="bg-white/90 backdrop-blur-lg rounded-2xl p-10 px-16 md:p-20 md:px-24 border-2 border-blue-200 shadow-2xl relative"
+                  className="bg-white/90 backdrop-blur-lg rounded-2xl p-6 md:p-20 md:px-24 border-2 border-blue-200 shadow-2xl relative"
                 >
                   {(() => {
                     const exp = experiences.find(e => e.id === selectedExperience);
@@ -146,7 +198,7 @@ export default function Experience() {
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.1 }}
-                          className="absolute -top-8 -left-8 w-32 h-32 bg-white rounded-xl shadow-xl border-4 border-blue-300 p-3 flex items-center justify-center overflow-hidden"
+                          className="absolute -top-6 -left-6 md:-top-8 md:-left-8 w-20 h-20 md:w-32 md:h-32 bg-white rounded-xl shadow-xl border-4 border-blue-300 p-2 md:p-3 flex items-center justify-center overflow-hidden"
                         >
                           <div className="relative w-full h-full">
                             <Image
@@ -163,9 +215,9 @@ export default function Experience() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 }}
-                          className="text-center"
+                          className="text-center mt-4 md:mt-0"
                         >
-                          <h3 className="text-4xl md:text-5xl font-bold text-slate-900">
+                          <h3 className="text-2xl md:text-5xl font-bold text-slate-900">
                             {exp.title}
                           </h3>
                         </motion.div>
@@ -177,7 +229,7 @@ export default function Experience() {
                           transition={{ delay: 0.2 }}
                           className="text-center"
                         >
-                          <p className="text-2xl md:text-3xl text-blue-600 font-bold">
+                          <p className="text-xl md:text-3xl text-blue-600 font-bold">
                             {exp.company}
                           </p>
                         </motion.div>
@@ -187,9 +239,9 @@ export default function Experience() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="py-8 px-4 md:px-8 flex justify-center"
+                          className="py-6 md:py-8 px-2 md:px-8 flex justify-center"
                         >
-                          <p className="text-slate-700 text-xl leading-relaxed text-center max-w-2xl mx-auto">
+                          <p className="text-slate-700 text-base md:text-xl leading-relaxed text-center max-w-2xl mx-auto">
                             {exp.description}
                           </p>
                         </motion.div>
